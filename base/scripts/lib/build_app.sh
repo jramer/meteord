@@ -10,8 +10,11 @@ cd $COPIED_APP_PATH
 
 # If package.json exists, use the meteor npm command to install the production dependencies
 # [ -e package.json ] && 
+echo "---NPM INSTALL---"
 meteor npm install --production --unsafe-perm
+echo "---METEOR BUILD---"
 meteor build --directory $BUNDLE_DIR --server=http://localhost:3000
+echo "---METEOR READY---"
 
 cd $BUNDLE_DIR/bundle/programs/server/
 npm i
@@ -19,6 +22,7 @@ npm i
 mv $BUNDLE_DIR/bundle /built_app
 
 # cleanup
+echo "---CLEANUP---"
 rm -rf $COPIED_APP_PATH
 rm -rf $BUNDLE_DIR
 rm -rf ~/.meteor
